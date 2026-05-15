@@ -1,69 +1,28 @@
-import bcrypt from "bcrypt";
-import prisma from "../database/prisma.js";
+import {
+  cadastrarUsuarioService,
+  loginUsuarioService,
+} from "../services/userService.js";
 
 export const cadastrarUsuario = async (req, res) => {
-  const { username, nomeCompleto, email, senha, confirmarSenha } = req.body;
-
-  // validar campos
-  if (!username || !nomeCompleto || !email || !senha || !confirmarSenha) {
-    return res.status(400).json({
-      erro: "Preencha todos os campos",
-    });
-  }
-
-  // validar senha
-  if (senha !== confirmarSenha) {
-    return res.status(400).json({
-      erro: "As senhas não coincidem",
-    });
-  }
-
   try {
-    // verificar se email já existe
-    const emailExistente = await prisma.usuarios.findUnique({
-      where: {
-        email,
-      },
-    });
-
-    if (emailExistente) {
-      return res.status(400).json({
-        erro: "Email já cadastrado",
-      });
-    }
-
-    // criptografar senha
-    const senhaHash = await bcrypt.hash(senha, 10);
-
-    // criar usuário
-    await prisma.usuarios.create({
-      data: {
-        username,
-
-        nome_completo: nomeCompleto,
-
-        email,
-
-        senha: senhaHash,
-      },
-    });
+    const usuario = await cadastrarUsuarioService(req.body);
 
     return res.status(201).json({
-      mensagem: "Usuário cadastrado com sucesso",
+      mensagem: "Usuário criado com sucesso",
+      usuario,
     });
   } catch (error) {
-    console.log(error);
+    if (error.message === "EMAIL_JA_EXISTE") {
+      return res.status(400).json({ erro: "Email já cadastrado" });
+    }
 
-    return res.status(500).json({
-      erro: "Erro interno do servidor",
-    });
+    return res.status(500).json({ erro: "Erro interno do servidor" });
   }
 };
 
 export const loginUsuario = async (req, res) => {
   const { email, senha } = req.body;
 
-  // validar campos
   if (!email || !senha) {
     return res.status(400).json({
       erro: "Preencha todos os campos",
@@ -71,45 +30,20 @@ export const loginUsuario = async (req, res) => {
   }
 
   try {
-    // buscar usuário
-    const usuario = await prisma.usuarios.findUnique({
-      where: {
-        email,
-      },
-    });
-
-    // usuário não encontrado
-    if (!usuario) {
-      return res.status(401).json({
-        erro: "Email ou senha inválidos",
-      });
-    }
-
-    // comparar senha
-    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
-
-    if (!senhaCorreta) {
-      return res.status(401).json({
-        erro: "Email ou senha inválidos",
-      });
-    }
+    const { usuario, token } = await loginUsuarioService(email, senha);
 
     return res.status(200).json({
       mensagem: "Login realizado com sucesso",
-
+      token,
       usuario: {
         id: usuario.id,
-
         username: usuario.username,
-
         email: usuario.email,
       },
     });
   } catch (error) {
-    console.log(error);
-
-    return res.status(500).json({
-      erro: "Erro interno do servidor",
+    return res.status(401).json({
+      erro: "Email ou senha inválidos",
     });
   }
 };

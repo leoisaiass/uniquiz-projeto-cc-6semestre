@@ -1,15 +1,14 @@
 import express from "express";
 import cors from "cors";
 import prisma from "./src/database/prisma.js";
-import { userRoutes, quizRoutes } from "./src/routes/index.js";
+import routes from "./src/routes/index.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/usuarios", userRoutes);
-app.use("/quizzes", quizRoutes);
+app.use("/", routes);
 
 async function conectarBanco() {
   try {
