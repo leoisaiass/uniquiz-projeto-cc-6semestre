@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniQuiz - Jogar com Amigos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .corpo-lobby {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .coluna-jogadores {
+            flex: 1;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding-right: 20px;
+        }
+
+        .coluna-pin {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lista-usuarios {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .usuario-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .avatar-dummy {
+            width: 35px;
+            height: 35px;
+            background: #ddd;
+            border-radius: 50%;
+        }
+
+        .pin-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 5px;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-pronto {
+            font-size: 0.8rem;
+            color: #4ade80;
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-cadastro">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+                <span class="logo-text">UniQuiz</span>
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quizes.html">Quizes</a></li>
+                <li><a href="dashboard.html">Ranking</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-central">
+        <div class="card-vidro" style="max-width: 800px;">
+            <h2 style="color: white; margin-bottom: 10px;">Jogue com Amigos</h2>
+
+            <div class="corpo-lobby">
+                <div class="coluna-jogadores">
+                    <h3 style="color: #facc15;">Lobby da Sala</h3>
+                    <ul class="lista-usuarios">
+                        <li class="usuario-item">
+                            <div class="avatar-dummy"></div>
+                            <span>Ítalo (Líder)</span>
+                            <span class="status-pronto">Pronto</span>
+                        </li>
+                        <li class="usuario-item">
+                            <div class="avatar-dummy"></div>
+                            <span>Bruno</span>
+                            <span class="status-pronto">Pronto</span>
+                        </li>
+                        <li class="usuario-item">
+                            <div class="avatar-dummy"></div>
+                            <span>Guilherme</span>
+                            <span style="color: #fb923c; font-size: 0.8rem; margin-left: auto;">Esperando...</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="coluna-pin">
+                    <p style="color: white;">Seu PIN do Jogo:</p>
+                    <div class="pin-display">UQZ-7491</div>
+
+                    <form class="formulario-corpo" style="width: 100%;">
+                        <div class="campo">
+                            <label>Entrar em outra sala?</label>
+                            <input type="text" placeholder="Insira o PIN aqui">
+                        </div>
+                        <button type="button" class="botao-entrar-laranja" style="width: 100%; margin-top: 10px;">
+                            ENTRAR NA SALA
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="rodape-card" style="margin-top: 30px;">
+                <button class="botao-amarelo" onclick="window.location.href='responder-quiz.html'">
+                    INICIAR PARTIDA
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

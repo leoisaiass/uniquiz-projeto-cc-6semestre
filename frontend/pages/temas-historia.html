@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniQuiz - História</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .btn-rotacao {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 68px;
+            height: 68px;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-rotacao:hover {
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
+        }
+
+        .btn-rotacao img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .btn-rotacao {
+                right: 12px;
+                bottom: 20px;
+                top: auto;
+                transform: none;
+                width: 58px;
+                height: 58px;
+            }
+
+            .btn-rotacao:hover {
+                transform: scale(1.05);
+            }
+
+            .btn-rotacao img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-quizes">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" class="logo-img" alt="Logo UniQuiz">
+                <span class="logo-text">UniQuiz</span>
+            </a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="quizes.html">Quizes</a></li>
+                <li><a href="#">Meus Quizes</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="index.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-temas">
+        <section class="card-painel-temas">
+
+            <div class="categoria-topo">
+                <div class="quiz-item icone-fixo">
+                    <img src="assets/icon-historia.png" alt="História">
+                    <span>História</span>
+                </div>
+            </div>
+
+            <div class="grid-temas" id="gridTemas"></div>
+
+            <button class="btn-rotacao" id="btnRotacao" title="Trocar temas">
+                <img src="assets/download.png" alt="Rotacionar temas">
+            </button>
+
+            <div class="rodape-temas">
+                <button class="btn-voltar" onclick="window.location.href='quizes.html'">
+                    Voltar
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        const gruposDeTemas = [
+            [
+                "2° Guerra Mundial",
+                "Guerra Fria",
+                "Descobrimento do Brasil",
+                "Revolução Industrial"
+            ],
+            [
+                "Era Vargas",
+                "Ditadura Militar",
+                "Brasil República",
+                "Idade Média"
+            ],
+            [
+                "Renascimento",
+                "Iluminismo",
+                "Roma Antiga",
+                "Grécia Antiga"
+            ]
+        ];
+
+        let grupoAtual = 0;
+
+        function criarCardTema(nomeTema) {
+            return `
+                <div class="tema-box">
+                    <h3 class="tema-titulo">${nomeTema}</h3>
+
+                    <div class="dificuldade-container bg-azul-tema">
+                        <p class="seletor-texto">Selecione a Dificuldade</p>
+
+                       <div class="botoes-dificuldade">
+                        <button class="btn-dif" onclick="window.location.href='responder-quiz.html'">Fácil</button>
+                        <button class="btn-dif" onclick="window.location.href='responder-quiz.html'">Médio</button>
+                        <button class="btn-dif" onclick="window.location.href='responder-quiz.html'">Intermediário</button>
+                        <button class="btn-dif" onclick="window.location.href='responder-quiz.html'">Difícil</button>
+                    </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderizarTemas() {
+            const grid = document.getElementById("gridTemas");
+            grid.innerHTML = gruposDeTemas[grupoAtual]
+                .map(criarCardTema)
+                .join("");
+        }
+
+        document.getElementById("btnRotacao").addEventListener("click", () => {
+            grupoAtual = (grupoAtual + 1) % gruposDeTemas.length;
+            renderizarTemas();
+        });
+
+        renderizarTemas();
+    </script>
+
+</body>
+
+</html>

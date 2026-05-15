@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniQuiz - Criar Quiz</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="bg-quizes">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+        <span class="logo-text">UniQuiz</span>
+      </a>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="quizes.html">Quizes</a></li>
+        <li><a href="#">Meus Quizes</a></li>
+        <li><a href="#">Ranking</a></li>
+        <li><a href="index.html">Sair</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="container-criar-quiz">
+
+    <section class="painel-criar-quiz">
+
+      <h1 class="titulo-criar-quiz">
+        Criar Novo Quiz
+      </h1>
+
+      <form id="formCriarQuiz" class="card-criar-quiz">
+
+        <!-- TEMA -->
+
+        <div class="campo-grande">
+
+          <label for="tema">
+            Tema do Quiz
+          </label>
+
+          <select id="tema" required>
+            <option value="1">História</option>
+            <option value="2">Tecnologia</option>
+            <option value="3">Geografia</option>
+            <option value="4">Matemática</option>
+          </select>
+
+        </div>
+
+        <!-- TÍTULO -->
+
+        <div class="campo-grande">
+
+          <label for="titulo">
+            Título do Quiz
+          </label>
+
+          <input type="text" id="titulo" placeholder="Digite o título do quiz" required>
+
+        </div>
+
+        <!-- DESCRIÇÃO -->
+
+        <div class="campo-textarea">
+
+          <label for="descricao">
+            Descrição
+          </label>
+
+          <textarea id="descricao" placeholder="Descreva o conteúdo do quiz" required></textarea>
+
+        </div>
+
+        <!-- DIFICULDADE -->
+
+        <div class="campo-grande">
+
+          <label for="dificuldade">
+            Dificuldade
+          </label>
+
+          <select id="dificuldade" required>
+
+            <option value="">
+              Selecione
+            </option>
+
+            <option value="facil">
+              Fácil
+            </option>
+
+            <option value="medio">
+              Médio
+            </option>
+
+            <option value="intermediario">
+              Intermediário
+            </option>
+
+            <option value="dificil">
+              Difícil
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- BOTÕES -->
+
+        <div class="acoes-criar-quiz">
+
+          <button type="button" class="btn-secundario-quiz" id="btnCancelar">
+            Cancelar
+          </button>
+
+          <button type="submit" class="btn-principal-quiz">
+            Criar Quiz
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <script src="../js/criar-quiz.js"></script>
+
+</body>
+
+</html>

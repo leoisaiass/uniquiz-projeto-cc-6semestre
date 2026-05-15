@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniQuiz - Respondendo</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="bg-quizes">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+                <span class="logo-text">UniQuiz</span>
+            </a>
+        </div>
+        <div class="painel-topo-simples">
+            <h1 style="color: white; margin: 0;">Responda o Quiz</h1>
+        </div>
+        <div class="auth-buttons">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <img src="assets/image_b7e62a.png" alt="Perfil" class="header-profile-img"
+                    style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid white;">
+                <div style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid white; background: #ccc;">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-quizes">
+        <section class="card-painel-pergunta">
+            <div class="header-pergunta">
+                <div class="pontuacao-info">
+                    <p>Pontuação da pergunta:</p>
+                    <strong>1.00</strong>
+                </div>
+                <img src="assets/icon-historia.png" alt="Tema" class="icon-tema-pergunta">
+                <div class="timer-circular">03:30</div>
+            </div>
+
+            <h2 class="titulo-sessao-pergunta">Responda as perguntas</h2>
+
+            <div class="caixa-pergunta-conteudo">
+                <div class="texto-pergunta">
+                    <h3>Pergunta #9</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In vel animi, nemo nulla deleniti ipsa,
+                        fugit sint neque reiciendis sunt molestiae distinctio fugiat sed! Tempora eum esse aperiam odio
+                        architectoneque reiciendis sunt distinctio fugiat sed! odio architecto.</p>
+                </div>
+
+                <div class="alternativas-resposta">
+                    <div class="campo-alternativa-quiz">
+                        <label>Alternativa A</label>
+                        <input type="text" placeholder="Resposta">
+                    </div>
+                    <div class="campo-alternativa-quiz">
+                        <label>Alternativa B</label>
+                        <input type="text" placeholder="Resposta">
+                    </div>
+                    <div class="campo-alternativa-quiz">
+                        <label>Alternativa C</label>
+                        <input type="text" placeholder="Resposta">
+                    </div>
+                    <div class="campo-alternativa-quiz">
+                        <label>Alternativa D</label>
+                        <input type="text" placeholder="Resposta">
+                    </div>
+                </div>
+
+                <div class="botoes-navegacao-quiz">
+                    <button class="btn-voltar-pergunta" onclick="window.history.back()">Voltar</button>
+                    <button class="btn-finalizar-quiz" onclick="window.location.href='dashboard.html'">Finalizar e
+                        salvar respostas</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

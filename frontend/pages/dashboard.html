@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniQuiz - Pontuação</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .metric-icon {
+            width: auto;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .header-profile-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="bg-quizes">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+                <span class="logo-text">UniQuiz</span>
+            </a>
+        </div>
+        <div class="painel-topo-simples">
+            <h1 style="color: white; margin: 0;">Pontuação</h1>
+        </div>
+        <div class="auth-buttons">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <img src="assets/image_b7e62a.png" alt="Perfil 1" class="header-profile-img">
+                <img src="assets/image_b7e66a.png" alt="Perfil 2" class="header-profile-img">
+            </div>
+        </div>
+    </header>
+
+    <main class="container-quizes">
+        <section class="card-painel dashboard-container">
+
+            <div class="score-circle-main">
+                <span>7/10</span>
+            </div>
+
+            <h2 class="dash-score-title">Sua Pontuação: 11.00</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card card-colocacao">
+                    <p class="metric-label">Colocação</p>
+                    <div class="metric-content">
+                        <img src="assets/pódio.jpg" alt="Pódio" class="metric-icon">
+                        <span class="metric-value">3º LUGAR</span>
+                    </div>
+                </div>
+
+                <div class="metric-card card-acertos">
+                    <p class="metric-label">Acertos</p>
+                    <div class="metric-content">
+                        <img src="assets/acertos.jpg" alt="Checkmark" class="metric-icon">
+                        <div class="metric-content-center">
+                            <span class="metric-value">7 / 10</span>
+                            <p class="metric-sub">Questões corretas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card card-media">
+                    <p class="metric-label">Média de tempo por Pergunta</p>
+                    <div class="metric-content">
+                        <img src="assets/tempo.jpg" alt="Relógio" class="metric-icon">
+                        <div class="metric-content-center">
+                            <span class="metric-value">00:00:56</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card card-tempo">
+                    <p class="metric-label">Tempo Gasto</p>
+                    <div class="metric-content">
+                        <img src="assets/Cronometro.jpg" alt="Cronômetro" class="metric-icon">
+                        <div class="metric-content-center">
+                            <span class="metric-value">00:15:20</span>
+                            <p class="metric-sub">Duração Total do Quiz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ranking-table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Jogador</th>
+                            <th>Nota Final</th>
+                            <th>Tempo total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1º</td>
+                            <td>Edu</td>
+                            <td>20.00</td>
+                            <td>05:55</td>
+                        </tr>
+                        <tr>
+                            <td>2º</td>
+                            <td>Theus</td>
+                            <td>19.00</td>
+                            <td>06:20</td>
+                        </tr>
+                        <tr>
+                            <td>3º</td>
+                            <td>Luh</td>
+                            <td>15.00</td>
+                            <td>08:05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="history-section">
+                <h3 class="history-title">Histórico de Respostas</h3>
+
+                <div class="history-item">
+                    <span class="q-number">Pergunta #1</span>
+                    <div class="q-bar">
+                        <input type="text" value="Pergunta" disabled>
+                        <span class="status-tag incorrect">Incorreta</span>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <span class="q-number">Pergunta #2</span>
+                    <div class="q-bar">
+                        <input type="text" value="Pergunta" disabled>
+                        <span class="status-tag correct">Correto</span>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <span class="q-number">Pergunta #3</span>
+                    <div class="q-bar">
+                        <input type="text" value="Pergunta" disabled>
+                        <span class="status-tag correct">Correto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <button class="btn-principal-quiz" onclick="window.location.href='index.html'"
+                    style="width: 300px;">Home</button>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+
+</html>

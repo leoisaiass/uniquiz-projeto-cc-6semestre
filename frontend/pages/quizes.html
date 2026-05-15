@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniQuiz - Quizes</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="bg-quizes">
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+                <span class="logo-text">UniQuiz</span>
+            </a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="quizes.html">Quizes</a></li>
+                <li><a href="#">Meus Quizes</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="index.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-quizes">
+        <section class="card-painel">
+
+            <div class="painel-topo-simples">
+                <h1>Quizes</h1>
+            </div>
+
+            <div class="grid-quizes">
+
+                <a href="temas-historia.html" class="link-quiz">
+                    <div class="quiz-item cat-azul">
+                        <img src="assets/icon-historia.png" alt="História">
+                        <span>História</span>
+                    </div>
+                </a>
+
+                <a href="temas-geografia.html" class="link-quiz">
+                    <div class="quiz-item cat-azul">
+                        <img src="assets/icon-geografia.png" alt="Geografia">
+                        <span>Geografia</span>
+                    </div>
+                </a>
+
+                <a href="temas-quimica.html" class="link-quiz">
+                    <div class="quiz-item cat-azul">
+                        <img src="assets/icon-quimica.png" alt="Química">
+                        <span>Química</span>
+                    </div>
+                </a>
+
+                <a href="temas-matematica.html" class="link-quiz">
+                    <div class="quiz-item cat-azul">
+                        <img src="assets/icon-matematica.png" alt="Matemática">
+                        <span>Matemática</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-verde">
+                        <img src="assets/icon-tecnologia.png" alt="Tecnologia">
+                        <span>Tecnologia</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-verde">
+                        <img src="assets/icon-algoritmos.png" alt="Algoritmos">
+                        <span>Algoritmos</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-verde">
+                        <img src="assets/icon-jogos.png" alt="Jogos">
+                        <span>Jogos</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-verde">
+                        <img src="assets/icon-cinema.png" alt="Cinema">
+                        <span>Cinema</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-amarelo">
+                        <img src="assets/icon-carros.png" alt="Cinema">
+                        <span>Carros</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-amarelo">
+                        <img src="assets/icon-futebol.png" alt="Futebol">
+                        <span>Futebol</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-amarelo">
+                        <img src="assets/icon-basquete.png" alt="Basquete">
+                        <span>Basquete</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-amarelo">
+                        <img src="assets/icon-animais.png" alt="Animais">
+                        <span>Animais</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-ciano">
+                        <img src="assets/icon-artes.png" alt="Artes">
+                        <span>Artes</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-ciano">
+                        <img src="assets/icon-harry-potter.png" alt="Harry Potter">
+                        <span>Harry Potter</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-ciano">
+                        <img src="assets/icon-disney.png" alt="Disney">
+                        <span>Disney</span>
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" class="link-quiz" onclick="avisarDesenvolvimento()">
+                    <div class="quiz-item cat-ciano">
+                        <img src="assets/icon-comida.png" alt="Comida">
+                        <span>Comida</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="painel-rodape-quizes">
+                <div class="texto-rodape-quizes">
+                    <p>
+                        Explore diversas categorias e teste seus conhecimentos!
+                        No UniQuiz, cada desafio é uma oportunidade de aprender algo novo de forma leve e divertida.
+                        Escolha seu tema favorito, suba no ranking e mostre que você é um mestre em curiosidades
+                    </p>
+                </div>
+
+                <div class="acao-rodape-quizes">
+                    <button class="btn-criar-quiz" onclick="window.location.href='criar-quiz.html'">
+                        Crie seu Quiz
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        function avisarDesenvolvimento() {
+            alert("Desculpe o transtorno, estamos em desenvolvimento :/");
+        }
+    </script>
+</body>
+
+</html>
