@@ -5,6 +5,15 @@ import jwt from "jsonwebtoken";
 export async function cadastrarUsuarioService(data) {
   const { username, nomeCompleto, email, senha } = data;
 
+  const usuarioExistente = await prisma.usuarios.findUnique({
+    where: { username },
+  });
+
+  if (usuarioExistente) {
+    throw new Error("USUARIO_JA_EXISTE");
+  }
+
+  // validação de e-mail
   const emailExistente = await prisma.usuarios.findUnique({
     where: { email },
   });
@@ -24,7 +33,17 @@ export async function cadastrarUsuarioService(data) {
     },
   });
 
-  return usuario;
+  const token = jwt.sign(
+    {
+      id: usuario.id,
+      username: usuario.username,
+      email: usuario.email,
+    },
+    "SEGREDO_SUPER_SECRETO",
+    { expiresIn: "1d" },
+  );
+
+  return { usuario, token };
 }
 
 export async function loginUsuarioService(email, senha) {

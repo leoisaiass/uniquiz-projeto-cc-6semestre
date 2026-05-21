@@ -5,15 +5,26 @@ import {
 
 export const cadastrarUsuario = async (req, res) => {
   try {
-    const usuario = await cadastrarUsuarioService(req.body);
+    const { usuario, token } = await cadastrarUsuarioService(req.body);
 
     return res.status(201).json({
       mensagem: "Usuário criado com sucesso",
-      usuario,
+
+      token,
+
+      usuario: {
+        id: usuario.id,
+        username: usuario.username,
+        email: usuario.email,
+      },
     });
   } catch (error) {
     if (error.message === "EMAIL_JA_EXISTE") {
       return res.status(400).json({ erro: "Email já cadastrado" });
+    }
+
+    if (error.message === "USUARIO_JA_EXISTE") {
+      return res.status(400).json({ erro: "Usuário já cadastrado" });
     }
 
     return res.status(500).json({ erro: "Erro interno do servidor" });
