@@ -1,0 +1,155 @@
+/* ========================================= */
+/* --- quizzes PAGE --- */
+/* ========================================= */
+
+/* CONTAINER GERAL */
+.container-quizzes {
+    padding: 100px 8% 60px;
+}
+
+.card-painel {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================= */
+/* --- HERO --- */
+/* ========================================= */
+
+.hero-quizzes {
+    padding: 10px 0;
+}
+
+.hero-conteudo {
+    max-width: 700px;
+}
+
+.hero-conteudo h1 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin: 16px 0;
+    font-weight: 800;
+}
+
+.hero-conteudo p {
+    opacity: 0.75;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* BADGE */
+.badge-topo {
+    display: inline-block;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    background: rgba(249,115,22,0.12);
+    color: var(--primary);
+}
+
+/* BOTÃO CRIAR QUIZ */
+.btn-criar-quiz {
+    margin-top: 20px;
+
+    background: var(--primary);
+    color: white;
+
+    border: none;
+    border-radius: var(--radius-full);
+
+    padding: 12px 22px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-criar-quiz:hover {
+    transform: translateY(-3px);
+    background: var(--primary-hover);
+}
+
+/* ========================================= */
+/* --- SEÇÃO DE QUIZZES --- */
+/* ========================================= */
+
+.quizzes-section {
+    margin-top: 60px;
+}
+
+.painel-topo-simples h2 {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.painel-topo-simples p {
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+/* GRID */
+.grid-quizzes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+/* CARD DO QUIZ */
+.quiz-item {
+    padding: 22px;
+
+    border-radius: var(--radius-lg);
+
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+.quiz-item:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(249,115,22,0.35);
+
+    background: rgba(255,255,255,0.06);
+}
+
+.quiz-item span {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Carregamento dos Temas */
+.loading-temas {
+    padding: 40px;
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    animation: pulseLoading 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseLoading {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+.error-temas {
+    padding: 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+}

@@ -1,8 +1,13 @@
 import express from "express";
-import { criarAlternativa } from "../controllers/alternativaController.js";
+
+import {
+  atualizarAlternativa,
+  deletarAlternativa,
+} from "../controllers/alternativaController.js";
 
 const router = express.Router();
 
-router.post("/", criarAlternativa);
+router.put("/:id", atualizarAlternativa);
+router.delete("/:id", deletarAlternativa);
 
 export default router;

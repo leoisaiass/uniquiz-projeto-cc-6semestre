@@ -1,0 +1,145 @@
+/* ========================================= */
+/* --- HERO ---                              */
+/* ========================================= */
+
+.hero {
+    padding: 120px 10% 90px;
+    display: flex;
+    align-items: center;
+    min-height: 85vh;
+}
+
+.hero-content {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-logo {
+    max-width: 340px;
+    height: auto;
+    margin-bottom: 28px;
+}
+
+.hero .description {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.08rem;
+    margin-bottom: 38px;
+}
+
+/* CTA usando system de botão */
+.btn-cta {
+    height: 56px;
+    padding: 0 34px;
+    border-radius: 999px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    box-shadow: 0 12px 30px rgba(249,115,22,0.28);
+}
+
+/* melhoria no hover global (reaproveita btn) */
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(249,115,22,0.35);
+}
+
+/* ========================================= */
+/* --- ABOUT ---                             */
+/* ========================================= */
+
+.about {
+    background: #ffffff;
+    padding: 110px 10%;
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+}
+
+.about-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--bg);
+    margin-bottom: 24px;
+}
+
+.about .description {
+    color: #475569;
+    line-height: 1.9;
+    font-size: 1.02rem;
+}
+
+.icon-img {
+    max-width: 300px;
+}
+
+/* ========================================= */
+/* --- SOLUTIONS ---                         */
+/* ========================================= */
+
+.solutions {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+    padding: 110px 5%;
+    text-align: center;
+}
+
+.solutions-main-title {
+    font-size: 2.8rem;
+    color: var(--text);
+    margin-bottom: 70px;
+    font-weight: 800;
+}
+
+/* grid mais moderno que flex */
+.solutions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* CARD ESPECÍFICO DA HOME (não sobrescreve global) */
+.home-card {
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.25s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(249,115,22,0.35);
+    background: rgba(255,255,255,0.06);
+}
+
+.card-title {
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 22px;
+    font-weight: 700;
+}
+
+.card-icon {
+    width: 72px;
+    margin-bottom: 24px;
+}
+
+.card-text {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 0.98rem;
+}

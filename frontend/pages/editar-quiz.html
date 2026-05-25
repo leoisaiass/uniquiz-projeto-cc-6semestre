@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>UniQuiz • Editar Quiz</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/logo.png"
+  />
+
+  <link
+    rel="stylesheet"
+    href="../css/main.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="../css/editar-quiz.css"
+  />
+
+</head>
+
+<body class="bg-quizes">
+
+  <!-- NAVBAR -->
+
+  <header class="navbar">
+
+    <div class="logo">
+
+      <a href="quizzes.html" class="logo-link">
+
+        <img
+          src="assets/logo.png"
+          class="logo-img"
+        />
+
+        <span class="logo-text">
+          UniQuiz
+        </span>
+
+      </a>
+
+    </div>
+
+    <nav>
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="quizzes.html">
+            Quizzes
+          </a>
+        </li>
+
+        <li>
+          <a href="meu-perfil.html">
+            Meu Perfil
+          </a>
+        </li>
+
+        <li
+          class="nav-usuario"
+          id="usuarioLogado"
+        ></li>
+
+        <li>
+          <a href="#" onclick="logout()">
+            Sair
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- CONTEÚDO -->
+
+  <main class="container-quizzes">
+
+    <section class="card-painel">
+
+      <!-- HERO -->
+
+      <section class="hero-editor">
+
+        <div>
+
+          <span class="badge-topo">
+            Editor de Quiz
+          </span>
+
+          <h1>
+            Gerencie suas perguntas
+          </h1>
+
+          <p>
+            Edite perguntas, alternativas e defina
+            respostas corretas de forma simples.
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- INFO QUIZ -->
+
+      <div class="quiz-meta">
+
+        <input
+          id="quizTitulo"
+          type="text"
+          placeholder="Título do quiz"
+        />
+
+        <select id="quizDificuldade">
+
+          <option value="facil">
+            Fácil
+          </option>
+
+          <option value="medio">
+            Médio
+          </option>
+
+          <option value="intermediario">
+            Intermediário
+          </option>
+
+          <option value="dificil">
+            Difícil
+          </option>
+
+        </select>
+
+        <button
+          onclick="salvarQuiz()"
+          class="btn-primary"
+        >
+          Salvar Quiz
+        </button>
+
+      </div>
+
+      <hr class="divisor" />
+
+      <!-- LISTA -->
+
+      <div id="listaPerguntas"></div>
+
+      <hr class="divisor" />
+
+      <!-- NOVA PERGUNTA -->
+
+      <div class="form-pergunta">
+
+        <h2>
+          Nova Pergunta
+        </h2>
+
+        <div class="campo-grande">
+
+          <label>
+            Pergunta
+          </label>
+
+          <input
+            id="textoPergunta"
+            type="text"
+            placeholder="Digite sua pergunta..."
+          />
+
+        </div>
+
+        <h3>
+          Alternativas
+        </h3>
+
+        <div
+          class="alternativas-box"
+          id="alternativasContainer"
+        ></div>
+
+        <div class="acoes-criar-quiz">
+
+          <button
+            onclick="adicionarAlternativa()"
+            class="btn-secundario"
+          >
+            + alternativa
+          </button>
+
+          <button
+            onclick="salvarPergunta()"
+            class="btn-primary"
+          >
+            Adicionar Pergunta
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SCRIPTS -->
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/editarQuiz.js"></script>
+
+  <script>
+
+    protegerPagina();
+    mostrarUsuarioLogado();
+
+  </script>
+
+</body>
+</html>

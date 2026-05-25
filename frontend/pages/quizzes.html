@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>UniQuiz • Quizzes</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/logo.png"
+    />
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    />
+</head>
+
+<body class="bg-quizzes">
+
+    <!-- ===================================== -->
+    <!-- NAVBAR -->
+    <!-- ===================================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo-link">
+            <img
+                src="assets/logo.png"
+                alt="Logo UniQuiz"
+                class="logo-img"
+            />
+
+            <span class="logo-text">
+                UniQuiz
+            </span>
+        </a>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="quizzes.html">
+                        Quizzes
+                    </a>
+                </li>
+
+                <li class="nav-usuario" id="usuarioLogado"></li>
+
+                <li>
+                    <a href="#" onclick="logout()">
+                        Sair
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ===================================== -->
+    <!-- CONTEÚDO -->
+    <!-- ===================================== -->
+
+    <main class="container-quizzes">
+
+        <div class="card-painel">
+
+            <!-- HERO -->
+
+            <section class="hero-quizzes">
+
+                <div class="hero-conteudo">
+
+                    <span class="badge-topo">
+                        Plataforma de Quizzes
+                    </span>
+
+                    <h1>
+                        Explore categorias e
+                        desafie seu conhecimento
+                    </h1>
+
+                    <p>
+                        Aprenda de forma interativa,
+                        participe de desafios e crie
+                        seus próprios quizzes personalizados.
+                    </p>
+
+                    <button
+                        class="btn-criar-quiz"
+                        onclick="window.location.href='criar-quiz.html'"
+                    >
+                        Criar novo Quiz
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- LISTA DE QUIZZES -->
+
+            <section class="quizzes-section">
+
+                <div class="painel-topo-simples">
+
+                    <h2>
+                        Categorias disponíveis
+                    </h2>
+
+                    <p>
+                        Escolha uma categoria para começar
+                        a responder quizzes e acompanhar
+                        seu desempenho.
+                    </p>
+
+                </div>
+
+                <div
+                    class="grid-quizzes"
+                    id="gridTemas"
+                ></div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ===================================== -->
+    <!-- SCRIPTS -->
+    <!-- ===================================== -->
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/session.js"></script>
+    <script src="../js/quizzes.js"></script>
+
+    <script>
+
+        protegerPagina();
+
+        mostrarUsuarioLogado();
+
+    </script>
+
+</body>
+
+</html>

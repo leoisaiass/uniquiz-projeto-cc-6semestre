@@ -1,0 +1,98 @@
+/* ========================================= */
+/* --- BUTTON BASE --- */
+/* ========================================= */
+
+.btn {
+    height: 46px;
+    padding: 0 24px;
+
+    border: none;
+    border-radius: var(--radius-full);
+
+    cursor: pointer;
+
+    font-size: var(--font-md);
+    font-weight: 600;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.25s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========================================= */
+/* LOGIN (mantido como está no HTML) */
+/* ========================================= */
+
+.btn-login {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    margin-right: 10px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.btn-login:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* SIGNUP (mantido como está no HTML) */
+/* ========================================= */
+
+.btn-signup {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-signup:hover {
+    background: var(--primary-hover);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(249,115,22,0.35),
+        0 0 18px rgba(249,115,22,0.25);
+}
+
+/* ========================================= */
+/* SHINE EFFECT (só signup) */
+/* ========================================= */
+
+.btn-signup::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+}
+
+.btn-signup:hover::after {
+    animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}

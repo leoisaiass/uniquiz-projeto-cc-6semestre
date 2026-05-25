@@ -1,0 +1,49 @@
+/* ========================================= */
+/* --- RESET E CONFIGURAÇÕES BÁSICAS ---     */
+/* ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    overflow-x: hidden;
+}
+
+/* Garante herança de fonte em elementos interativos */
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+/* Remove estilos padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Links padrão */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Imagens responsivas por padrão */
+img {
+    max-width: 100%;
+    display: block;
+}

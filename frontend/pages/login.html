@@ -1,21 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UniQuiz - Login</title>
-    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body class="bg-cadastro">
+
     <header class="navbar">
         <div class="logo">
-            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img" />
                 <span class="logo-text">UniQuiz</span>
             </a>
         </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -28,21 +32,22 @@
 
     <div class="container-central">
         <div class="card-vidro">
-            <img src="assets/logo1.png" alt="Logo UniQuiz" class="logo-formulario">
+
+            <img src="assets/logo1.png" alt="Logo UniQuiz" class="logo-formulario" />
 
             <form class="formulario-corpo" id="formLogin">
 
                 <div class="campo">
                     <label>Email</label>
-                    <input type="email" id="email" required>
+                    <input class="input" type="email" id="email" required />
                 </div>
 
                 <div class="campo">
                     <label>Senha</label>
-                    <input type="password" id="senha" required>
+                    <input class="input" type="password" id="senha" required />
                 </div>
 
-                <button type="submit" class="botao-amarelo">
+                <button type="submit" class="btn btn-login">
                     Entrar
                 </button>
 
@@ -50,13 +55,22 @@
 
             <div class="rodape-card">
                 <p>Primeiro acesso?</p>
-                <button class="botao-entrar-laranja"
-                    onclick="window.location.href='cadastro.html'">Cadastrar-se</button>
+
+                <button class="btn btn-signup"
+                        onclick="window.location.href='cadastro.html'">
+                    Cadastrar-se
+                </button>
             </div>
+
         </div>
     </div>
 
+    <script src="../js/auth.js"></script>
     <script src="../js/login.js"></script>
-</body>
 
+    <script>
+        bloquearPaginaPublica();
+    </script>
+
+</body>
 </html>

@@ -101,12 +101,51 @@ export const buscarQuizzesPorUsuario = async (req, res) => {
   return res.json(quizzes);
 };
 
+export const atualizarQuiz = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { titulo, dificuldade } = req.body;
+
+    const quiz = await prisma.quizzes.update({
+      where: {
+        id: Number(id),
+      },
+
+      data: {
+        titulo,
+        dificuldade,
+      },
+    });
+
+    return res.json(quiz);
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      erro: "Erro ao atualizar quiz",
+    });
+  }
+};
+
 export const deletarQuiz = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  await prisma.quizzes.delete({
-    where: { id: Number(id) },
-  });
+    await prisma.quizzes.delete({
+      where: {
+        id: Number(id),
+      },
+    });
 
-  return res.json({ mensagem: "Quiz deletado" });
+    return res.json({
+      mensagem: "Quiz deletado",
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      erro: "Erro ao deletar quiz",
+    });
+  }
 };

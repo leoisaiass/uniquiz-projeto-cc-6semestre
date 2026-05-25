@@ -1,0 +1,124 @@
+/* ========================================= */
+/* --- CRIAR QUIZ PAGE --- */
+/* ========================================= */
+
+/* CONTAINER PRINCIPAL */
+.container-criar-quiz {
+    padding: 60px 8%;
+    display: flex;
+    justify-content: center;
+}
+
+/* PAINEL */
+.painel-criar-quiz {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* TÍTULO */
+.titulo-criar-quiz {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* CARD FORM */
+.card-criar-quiz {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+/* CAMPOS */
+.campo-grande {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campo-grande label {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* INPUTS E SELECTS */
+.campo-grande input,
+.campo-grande select,
+.campo-textarea textarea {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: white;
+    outline: none;
+}
+
+
+/* melhora opções do dropdown (quando suportado) */
+.campo-grande select option {
+    background: #0f172a;
+    color: white;
+}
+
+/* TEXTAREA */
+.campo-textarea {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campo-textarea label {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.campo-textarea textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* BOTÕES */
+.acoes-criar-quiz {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* BOTÃO SECUNDÁRIO */
+.btn-secundario-quiz {
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.btn-secundario-quiz:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-principal-quiz {
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-principal-quiz:hover {
+    background: var(--primary-hover);
+    transform: translateY(-3px);
+}

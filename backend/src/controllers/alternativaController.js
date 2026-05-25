@@ -1,24 +1,37 @@
-import prisma from "../database/prisma.js";
+import {
+  atualizarAlternativa as atualizarAlternativaService,
+  deletarAlternativa as deletarAlternativaService,
+} from "../services/alternativaService.js";
 
-export const criarAlternativa = async (req, res) => {
+export const atualizarAlternativa = async (req, res) => {
   try {
-    const { pergunta_id, texto, correta } = req.body;
+    const alternativa = await atualizarAlternativaService(
+      req.params.id,
+      req.body,
+    );
 
-    if (!pergunta_id || !texto) {
-      return res.status(400).json({ erro: "Dados inválidos" });
-    }
-
-    const alternativa = await prisma.alternativas.create({
-      data: {
-        texto,
-        correta: correta ?? false,
-        pergunta_id: Number(pergunta_id),
-      },
-    });
-
-    return res.status(201).json(alternativa);
+    return res.json(alternativa);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ erro: "Erro ao criar alternativa" });
+
+    return res.status(500).json({
+      erro: "Erro ao atualizar alternativa",
+    });
+  }
+};
+
+export const deletarAlternativa = async (req, res) => {
+  try {
+    await deletarAlternativaService(req.params.id);
+
+    return res.json({
+      mensagem: "Alternativa deletada",
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      erro: "Erro ao deletar alternativa",
+    });
   }
 };

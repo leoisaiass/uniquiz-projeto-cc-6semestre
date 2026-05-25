@@ -1,0 +1,149 @@
+/* ========================================= */
+/* --- NAVBAR ---                            */
+/* ========================================= */
+
+.navbar {
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 5%;
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 44px;
+    width: auto;
+    border-radius: 12px;
+}
+
+.logo-text {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+}
+
+/* LINKS */
+
+.nav-links {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    font-weight: 500;
+
+    position: relative;
+
+    transition: all 0.25s ease;
+}
+
+/* hover moderno */
+.nav-links a:hover {
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* underline animado */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 0%;
+    height: 2px;
+
+    background: var(--primary);
+
+    transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ========================================= */
+/* --- Mostrar Usuário Logado ---                            */
+/* ========================================= */
+
+.usuario-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: var(--text);
+
+    padding: 6px 10px;
+    border-radius: var(--radius-full);
+
+    transition: 0.2s ease;
+}
+
+.usuario-box:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-1px);
+}
+
+.usuario-avatar {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+.usuario-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.usuario-label {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.usuario-nome {
+    font-size: 0.9rem;
+    font-weight: 600;
+}

@@ -1,0 +1,135 @@
+/* Página de quizes */
+.hero-quizes {
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-conteudo {
+  max-width: 700px;
+}
+
+.badge-topo {
+  display: inline-block;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.12);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  margin-bottom: 15px;
+}
+
+.hero-quizes h1 {
+  font-size: 42px;
+  line-height: 1.1;
+
+  margin-bottom: 18px;
+
+  color: white;
+}
+
+.hero-quizes p {
+  font-size: 16px;
+  line-height: 1.6;
+
+  opacity: 0.9;
+
+  margin-bottom: 25px;
+
+  color: white;
+}
+
+
+/* Cards de categorias */
+.grid-quizes .quiz-item {
+    width: 150px;
+    height: 100px;
+
+    background: linear-gradient(
+        to bottom,
+        #f97316,
+        #ea580c
+    );
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease;
+
+    box-shadow:
+        0 6px 14px rgba(0,0,0,.18);
+
+    cursor: pointer;
+}
+
+/* Hover */
+.grid-quizes .quiz-item:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 12px 22px rgba(0,0,0,.25);
+}
+
+/* Ícone */
+.grid-quizes .quiz-item img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+
+    margin-bottom: 8px;
+
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.2));
+}
+
+/* Texto */
+.grid-quizes .quiz-item span {
+    color: white;
+
+    font-size: .95rem;
+    font-weight: 700;
+
+    text-align: center;
+    line-height: 1.1;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,.25);
+}
+
+.bg-quizes {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #2563eb 0%,
+            #1d4ed8 100%
+        );
+}
+
+.card-painel {
+    background:
+        rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+}

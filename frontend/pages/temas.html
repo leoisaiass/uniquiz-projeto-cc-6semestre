@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>UniQuiz • Tema</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/logo.png"
+    />
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    />
+</head>
+
+<body class="bg-quizes">
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="quizzes.html" class="logo-link">
+            <img
+                src="assets/logo.png"
+                class="logo-img"
+                alt="Logo UniQuiz"
+            />
+
+            <span class="logo-text">
+                UniQuiz
+            </span>
+        </a>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="quizzes.html">
+                        Quizzes
+                    </a>
+                </li>
+
+                <li class="nav-usuario" id="usuarioLogado"></li>
+
+                <li>
+                    <a href="#" onclick="logout()">
+                        Sair
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main class="container-temas">
+
+        <section class="card-painel-temas">
+
+            <!-- TOPO -->
+
+            <div class="categoria-topo">
+
+                <span class="badge-topo">
+                    Categoria
+                </span>
+
+                <h1 id="tituloTema">
+                    Carregando...
+                </h1>
+
+                <p>
+                    Escolha um quiz para começar.
+                </p>
+
+            </div>
+
+            <!-- GRID -->
+
+            <div
+                class="grid-temas"
+                id="gridQuizzes"
+            >
+
+                <div class="loading-temas">
+                    Carregando quizzes...
+                </div>
+
+            </div>
+
+            <!-- RODAPÉ -->
+
+            <div class="rodape-temas">
+
+                <button
+                    class="btn-secundario-quiz"
+                    onclick="window.location.href='quizzes.html'"
+                >
+                    Voltar
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- SCRIPTS -->
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/session.js"></script>
+    <script src="../js/temas.js"></script>
+
+    <script>
+        protegerPagina();
+        mostrarUsuarioLogado();
+    </script>
+
+</body>
+
+</html>

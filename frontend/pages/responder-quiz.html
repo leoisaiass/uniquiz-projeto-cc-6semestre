@@ -2,82 +2,192 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniQuiz - Respondendo</title>
-    <link rel="stylesheet" href="../css/style.css">
+
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>UniQuiz • Responder Quiz</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/logo.png"
+    />
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    />
+
 </head>
 
 <body class="bg-quizes">
 
+    <!-- NAVBAR -->
+
     <header class="navbar">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/logo.png" alt="Logo UniQuiz" class="logo-img">
-                <span class="logo-text">UniQuiz</span>
-            </a>
-        </div>
-        <div class="painel-topo-simples">
-            <h1 style="color: white; margin: 0;">Responda o Quiz</h1>
-        </div>
-        <div class="auth-buttons">
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <img src="assets/image_b7e62a.png" alt="Perfil" class="header-profile-img"
-                    style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid white;">
-                <div style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid white; background: #ccc;">
-                </div>
-            </div>
-        </div>
+
+        <a href="quizzes.html" class="logo-link">
+
+            <img
+                src="assets/logo.png"
+                alt="Logo UniQuiz"
+                class="logo-img"
+            />
+
+            <span class="logo-text">
+                UniQuiz
+            </span>
+
+        </a>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="quizzes.html">
+                        Quizzes
+                    </a>
+                </li>
+
+                <li class="nav-usuario" id="usuarioLogado"></li>
+
+                <li>
+                    <a href="#" onclick="logout()">
+                        Sair
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
     </header>
 
-    <main class="container-quizes">
-        <section class="card-painel-pergunta">
-            <div class="header-pergunta">
-                <div class="pontuacao-info">
-                    <p>Pontuação da pergunta:</p>
-                    <strong>1.00</strong>
+    <!-- CONTEÚDO -->
+
+    <main class="container-quizzes">
+
+        <div class="card-painel">
+
+            <!-- TOPO -->
+
+            <section class="hero-quizzes hero-responder">
+
+                <div class="hero-conteudo">
+
+                    <span class="badge-topo">
+                        Respondendo Quiz
+                    </span>
+
+                    <h1 id="tituloQuiz">
+                        Carregando quiz...
+                    </h1>
+
+                    <p>
+                        Leia com atenção e escolha
+                        a alternativa correta.
+                    </p>
+
                 </div>
-                <img src="assets/icon-historia.png" alt="Tema" class="icon-tema-pergunta">
-                <div class="timer-circular">03:30</div>
-            </div>
 
-            <h2 class="titulo-sessao-pergunta">Responda as perguntas</h2>
+                <div class="quiz-status">
 
-            <div class="caixa-pergunta-conteudo">
+                    <div class="status-box">
+
+                        <span>Pontuação</span>
+
+                        <strong id="pontuacao">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="status-box timer-box">
+
+                        <span>Tempo</span>
+
+                        <strong id="contador">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- CARD PERGUNTA -->
+
+            <section class="card-pergunta-principal">
+
+                <div class="pergunta-topo">
+
+                    <span id="numeroPergunta">
+                        Pergunta 1
+                    </span>
+
+                </div>
+
                 <div class="texto-pergunta">
-                    <h3>Pergunta #9</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In vel animi, nemo nulla deleniti ipsa,
-                        fugit sint neque reiciendis sunt molestiae distinctio fugiat sed! Tempora eum esse aperiam odio
-                        architectoneque reiciendis sunt distinctio fugiat sed! odio architecto.</p>
+
+                    <h2 id="textoPergunta">
+                        Carregando pergunta...
+                    </h2>
+
                 </div>
 
-                <div class="alternativas-resposta">
-                    <div class="campo-alternativa-quiz">
-                        <label>Alternativa A</label>
-                        <input type="text" placeholder="Resposta">
-                    </div>
-                    <div class="campo-alternativa-quiz">
-                        <label>Alternativa B</label>
-                        <input type="text" placeholder="Resposta">
-                    </div>
-                    <div class="campo-alternativa-quiz">
-                        <label>Alternativa C</label>
-                        <input type="text" placeholder="Resposta">
-                    </div>
-                    <div class="campo-alternativa-quiz">
-                        <label>Alternativa D</label>
-                        <input type="text" placeholder="Resposta">
-                    </div>
-                </div>
+                <!-- ALTERNATIVAS -->
+
+                <div
+                    class="alternativas-resposta"
+                    id="alternativasContainer"
+                ></div>
+
+                <!-- AÇÕES -->
 
                 <div class="botoes-navegacao-quiz">
-                    <button class="btn-voltar-pergunta" onclick="window.history.back()">Voltar</button>
-                    <button class="btn-finalizar-quiz" onclick="window.location.href='dashboard.html'">Finalizar e
-                        salvar respostas</button>
+
+                    <button
+                        class="btn-voltar-pergunta"
+                        onclick="window.history.back()"
+                    >
+                        Voltar
+                    </button>
+
+                    <button
+                        class="btn-finalizar-quiz"
+                        id="btnProxima"
+                        disabled
+                    >
+                        Próxima
+                    </button>
+
                 </div>
-            </div>
-        </section>
+
+            </section>
+
+        </div>
+
     </main>
+
+    <!-- SCRIPTS -->
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/session.js"></script>
+    <script src="../js/responderQuiz.js"></script>
+
+    <script>
+
+        protegerPagina();
+        mostrarUsuarioLogado();
+
+    </script>
 
 </body>
 

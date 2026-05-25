@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Perfil - UniQuiz</title>
+  <link
+        rel="icon"
+        type="image/png"
+        href="assets/logo.png"
+    />
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+
+<body class="bg-quizzes">
+
+<header class="navbar">
+  <div class="logo">
+    <a href="quizzes.html" class="logo-link">
+      <img src="assets/logo.png" class="logo-img"/>
+      <span class="logo-text">Meu Perfil</span>
+    </a>
+  </div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="quizzes.html">quizzes</a></li>
+      <li><a href="meu-perfil.html">Meu Perfil</a></li>
+      <li><a href="#" onclick="logout()">Sair</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container-quizzes">
+
+  <section class="card-painel">
+
+    <h1>Meus Quizzes</h1>
+
+    <div id="listaQuizzes" class="grid-quizzes"></div>
+
+  </section>
+
+</main>
+
+<script src="../js/auth.js"></script>
+
+<script>
+protegerPagina();
+
+const usuario = JSON.parse(localStorage.getItem("usuario"));
+const usuarioId = usuario?.id;
+
+async function carregarMeusQuizzes() {
+  try {
+    const res = await fetch(`http://localhost:3000/quizzes/usuario/${usuarioId}`);
+    const quizzes = await res.json();
+
+    const container = document.getElementById("listaQuizzes");
+
+    container.innerHTML = quizzes.map(q => `
+      <div class="quiz-item cat-azul">
+
+        <h3>${q.titulo}</h3>
+        <p>${q.descricao || ""}</p>
+
+        <button onclick="editarQuiz(${q.id})">
+          Editar perguntas
+        </button>
+
+        <button onclick="deletarQuiz(${q.id})">
+          Excluir
+        </button>
+
+      </div>
+    `).join("");
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function editarQuiz(id) {
+  window.location.href = `editar-quiz.html?quizId=${id}`;
+}
+
+async function deletarQuiz(id) {
+  if (!confirm("Deseja excluir este quiz?")) return;
+
+  await fetch(`http://localhost:3000/quizzes/${id}`, {
+    method: "DELETE"
+  });
+
+  carregarMeusQuizzes();
+}
+
+carregarMeusQuizzes();
+</script>
+
+</body>
+</html>

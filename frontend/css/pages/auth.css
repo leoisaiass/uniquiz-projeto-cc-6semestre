@@ -1,0 +1,106 @@
+/* ========================================= */
+/* --- AUTH PAGES (LOGIN / CADASTRO) ---    */
+/* ========================================= */
+
+.bg-cadastro {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left, rgba(249,115,22,0.15), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,0.12), transparent 45%),
+        var(--bg);
+}
+
+/* container central */
+.container-central {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-6);
+}
+
+/* card vidro */
+.card-vidro {
+    width: 420px;
+    padding: var(--space-6);
+
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    backdrop-filter: blur(14px);
+
+    box-shadow: var(--shadow-md);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+
+    animation: fadeIn 0.4s ease;
+}
+
+/* logo */
+.logo-formulario {
+    width: 140px;
+    margin: 0 auto;
+}
+
+/* formulário */
+.formulario-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.campo label {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+.campo input {
+    padding: 12px 14px;
+
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.campo input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+}
+
+/* rodapé do card */
+.rodape-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+/* animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
