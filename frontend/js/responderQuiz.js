@@ -1,5 +1,4 @@
 const params = new URLSearchParams(window.location.search);
-
 const quizId = params.get("quizId");
 
 /* ========================================= */
@@ -7,34 +6,46 @@ const quizId = params.get("quizId");
 /* ========================================= */
 
 let quiz = null;
-
 let perguntaAtual = 0;
-
 let pontuacao = 0;
-
 let respostaSelecionada = null;
-
 let tempoRestante = 15;
-
 let intervaloTimer = null;
+let tempoInicio = Date.now();
 
 /* ========================================= */
 /* ELEMENTOS */
 /* ========================================= */
 
 const tituloQuiz = document.getElementById("tituloQuiz");
-
 const numeroPergunta = document.getElementById("numeroPergunta");
-
 const textoPergunta = document.getElementById("textoPergunta");
-
 const alternativasContainer = document.getElementById("alternativasContainer");
-
 const pontuacaoElemento = document.getElementById("pontuacao");
-
 const contadorElemento = document.getElementById("contador");
-
 const btnProxima = document.getElementById("btnProxima");
+
+/* ========================================= */
+/* REQUEST HELPER */
+/* ========================================= */
+
+async function request(url, options = {}) {
+  const response = await fetch(`http://localhost:3000${url}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    ...options,
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.erro || "Erro na requisição");
+  }
+
+  return data;
+}
 
 /* ========================================= */
 /* CARREGAR QUIZ */
@@ -42,18 +53,11 @@ const btnProxima = document.getElementById("btnProxima");
 
 async function carregarQuiz() {
   try {
-    const response = await fetch(`http://localhost:3000/quizzes/${quizId}`);
-
-    if (!response.ok) {
-      throw new Error("Erro ao carregar quiz");
-    }
-
-    quiz = await response.json();
+    quiz = await request(`/quizzes/${quizId}`);
 
     tituloQuiz.innerText = quiz.titulo;
 
     atualizarPontuacao();
-
     mostrarPergunta();
   } catch (error) {
     console.log(error);
@@ -72,17 +76,6 @@ async function carregarQuiz() {
         <p>
           Tente novamente mais tarde.
         </p>
-
-        <div class="resultado-acoes">
-
-          <button
-            class="btn-finalizar-quiz"
-            onclick="window.location.href='quizzes.html'"
-          >
-            Voltar
-          </button>
-
-        </div>
 
       </div>
     `;
@@ -103,7 +96,6 @@ function mostrarPergunta() {
   btnProxima.disabled = true;
 
   numeroPergunta.innerText = `Pergunta ${perguntaAtual + 1}`;
-
   textoPergunta.innerText = pergunta.texto;
 
   alternativasContainer.innerHTML = "";
@@ -112,7 +104,6 @@ function mostrarPergunta() {
     const button = document.createElement("button");
 
     button.type = "button";
-
     button.classList.add("campo-alternativa-quiz");
 
     button.innerHTML = `
@@ -133,7 +124,6 @@ function mostrarPergunta() {
   });
 
   atualizarTextoBotao();
-
   iniciarTimer();
 }
 
@@ -200,10 +190,47 @@ function atualizarTimer() {
 }
 
 /* ========================================= */
+/* SALVAR TENTATIVA */
+/* ========================================= */
+
+async function salvarTentativa() {
+  try {
+    const tempoSegundos = Math.floor((Date.now() - tempoInicio) / 1000);
+
+    await request("/tentativas", {
+      method: "POST",
+
+      body: JSON.stringify({
+        quiz_id: Number(quizId),
+        pontuacao,
+        total_questoes: quiz.perguntas.length,
+        tempo_segundos: tempoSegundos,
+      }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/* ========================================= */
+/* RANKING */
+/* ========================================= */
+
+async function buscarRanking() {
+  try {
+    return await request(`/tentativas/ranking/${quizId}`);
+  } catch (error) {
+    console.log(error);
+
+    return [];
+  }
+}
+
+/* ========================================= */
 /* AVANÇAR */
 /* ========================================= */
 
-function avancarPergunta() {
+async function avancarPergunta() {
   clearInterval(intervaloTimer);
 
   if (respostaSelecionada && respostaSelecionada.correta) {
@@ -217,7 +244,11 @@ function avancarPergunta() {
   if (perguntaAtual < quiz.perguntas.length) {
     mostrarPergunta();
   } else {
-    mostrarResultado();
+    await salvarTentativa();
+
+    const ranking = await buscarRanking();
+
+    mostrarResultado(ranking);
   }
 }
 
@@ -225,15 +256,15 @@ function avancarPergunta() {
 /* EVENTO BOTÃO */
 /* ========================================= */
 
-btnProxima.addEventListener("click", () => {
-  avancarPergunta();
+btnProxima.addEventListener("click", async () => {
+  await avancarPergunta();
 });
 
 /* ========================================= */
 /* RESULTADO */
 /* ========================================= */
 
-function mostrarResultado() {
+function mostrarResultado(ranking = []) {
   const totalPerguntas = quiz.perguntas.length;
 
   const porcentagem = Math.round((pontuacao / totalPerguntas) * 100);
@@ -249,6 +280,33 @@ function mostrarResultado() {
   } else {
     mensagem = "Continue praticando 📚";
   }
+
+  const rankingHTML = ranking
+    .slice(0, 5)
+    .map((item, index) => {
+      return `
+        <div class="ranking-item">
+
+          <span>
+            #${index + 1}
+          </span>
+
+          <strong>
+            ${item.usuarios.username}
+          </strong>
+
+          <span>
+            ${item.pontuacao}/${item.total_questoes}
+          </span>
+
+          <span>
+            ${item.tempo_segundos}s
+          </span>
+
+        </div>
+      `;
+    })
+    .join("");
 
   document.querySelector(".card-pergunta-principal").innerHTML = `
     <div class="resultado-quiz">
@@ -276,6 +334,16 @@ function mostrarResultado() {
       <p>
         Você acertou ${porcentagem}% das perguntas.
       </p>
+
+      <div class="ranking-box">
+
+        <h3>
+          Ranking
+        </h3>
+
+        ${rankingHTML || "<p>Nenhuma tentativa ainda.</p>"}
+
+      </div>
 
       <div class="resultado-acoes">
 
