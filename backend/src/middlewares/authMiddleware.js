@@ -10,7 +10,7 @@ export function autenticar(req, res, next) {
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, "SEGREDO_SUPER_SECRETO");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.usuario = decoded; // "usuário logado"
 

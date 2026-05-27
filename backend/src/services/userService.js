@@ -67,7 +67,7 @@ export async function loginUsuarioService(email, senha) {
       username: usuario.username,
       email: usuario.email,
     },
-    "SEGREDO_SUPER_SECRETO",
+    process.env.JWT_SECRET,
     { expiresIn: "1d" },
   );
 

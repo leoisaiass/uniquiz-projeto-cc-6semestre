@@ -54,7 +54,7 @@ export const loginUsuario = async (req, res) => {
     });
   } catch (error) {
     return res.status(401).json({
-      erro: "Email ou senha inválidos",
+      erro: "Email ou senha inválidos!",
     });
   }
 };

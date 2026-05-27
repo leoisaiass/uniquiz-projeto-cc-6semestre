@@ -2,7 +2,13 @@ import prisma from "../database/prisma.js";
 
 export const criarTentativa = async (req, res) => {
   try {
-    const { quiz_id, pontuacao, total_questoes, tempo_segundos } = req.body;
+    const {
+      quiz_id,
+      pontuacao,
+      total_questoes,
+      tempo_segundos,
+      tempo_milisegundos,
+    } = req.body;
 
     const tentativa = await prisma.tentativas.create({
       data: {
@@ -12,6 +18,7 @@ export const criarTentativa = async (req, res) => {
         pontuacao,
         total_questoes,
         tempo_segundos,
+        tempo_milisegundos,
       },
     });
 
@@ -48,11 +55,12 @@ export const buscarRankingQuiz = async (req, res) => {
         {
           pontuacao: "desc",
         },
-
         {
           tempo_segundos: "asc",
         },
-
+        {
+          tempo_milisegundos: "asc",
+        },
         {
           created_at: "asc",
         },

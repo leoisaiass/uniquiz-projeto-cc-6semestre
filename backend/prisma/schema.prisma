@@ -61,7 +61,8 @@ model tentativas {
   pontuacao      Int
   total_questoes Int
 
-  tempo_segundos Int
+  tempo_segundos     Int
+  tempo_milisegundos Int @default(0)
 
   created_at DateTime @default(now())
 
